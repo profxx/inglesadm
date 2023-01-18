@@ -1,6 +1,11 @@
 <h1>Inglês ADM</h1>
 <h3>Sistema de administração de pequenos cursos </h3>
 
+O sistema se preocupa em duas áreas:
+- Gestão dos alunos (pagamentos, quantidade, informação)
+- Gestão educacional (notas, frequência, objetivos, níveis)
+
+
 
 Política de Segurança AWS
 {
