@@ -19,7 +19,7 @@
             print('<tr>');
             print('<td>'.$row->data_pagamento.'</td>');
             print('<td>'.$row->nome.'</td>');
-            print('<td>'.$row->valor.'</td>');
+            print('<td>R$ '.$row->valor.',00</td>');
             print('<td>'.$row->conta_recebida.'</td>');
             print("<td>
                 <!-- Botão Editar -->
