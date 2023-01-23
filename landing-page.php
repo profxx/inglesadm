@@ -4,25 +4,30 @@ $sql_qtd_alunos = 'SELECT COUNT(distinct nome) AS qtdRegistros FROM aluno;';
 $res_qtd_alunos = $conn->query($sql_qtd_alunos);
 $qtd = $res_qtd_alunos->fetch_object()->qtdRegistros;
 
+
 $sql_faturamento_mensal = 'SELECT SUM(valor) AS faturamento FROM aluno';
 $res_faturamento = $conn->query($sql_faturamento_mensal);
 $fat = $res_faturamento->fetch_object()->faturamento;
 
-$sql_recebido = 'SELECT SUM(valor) AS recebido FROM lancamento';
+
+$sql_recebido = 'SELECT SUM(valor) AS recebido, CASE EXTRACT(MONTH from data_pagamento) WHEN 1 THEN "Janeiro" WHEN 2 THEN "Fevereiro" WHEN 3 THEN "Março" WHEN 4 THEN "Abril" WHEN 5 THEN "Maio" WHEN 6 THEN "Junho" WHEN 7 THEN "Julho" WHEN 8 THEN "Agosto" WHEN 9 THEN "Setembro" WHEN 10 THEN "Outubro" WHEN 11 THEN "Novembro" WHEN 12 THEN "Dezembro" END AS mes, COUNT(id_lancamento) AS qtdPagtos, EXTRACT(YEAR from data_pagamento) as ano FROM lancamento GROUP BY mes';
 $res_recebido = $conn->query($sql_recebido);
-$rec = $res_recebido->fetch_object()->recebido;
+
 
 $sql_worldlink_intro = 'SELECT COUNT(distinct nome) AS qtdWLIntro FROM aluno WHERE aluno_livro="NAT GEO World Link Intro"';
 $res_qtd_WLIntro = $conn->query($sql_worldlink_intro);
 $qtd_WLI = $res_qtd_WLIntro->fetch_object()->qtdWLIntro;
 
+
 $sql_worldlink_1 = 'SELECT COUNT(distinct nome) AS qtdWL1 FROM aluno WHERE aluno_livro="NAT GEO World Link 1"';
 $res_qtd_WL1 = $conn->query($sql_worldlink_1);
 $qtd_WL1 = $res_qtd_WL1->fetch_object()->qtdWL1;
 
+
 $sql_worldlink_2 = 'SELECT COUNT(distinct nome) AS qtdWL2 FROM aluno WHERE aluno_livro="NAT GEO World Link 2"';
 $res_qtd_WL2 = $conn->query($sql_worldlink_2);
 $qtd_WL2 = $res_qtd_WL2->fetch_object()->qtdWL2;
+
 
 $sql_worldlink_3 = 'SELECT COUNT(distinct nome) AS qtdWL3 FROM aluno WHERE aluno_livro="NAT GEO World Link 3"';
 $res_qtd_WL3 = $conn->query($sql_worldlink_3);
@@ -44,10 +49,6 @@ $sql_topnotch_3 = 'SELECT COUNT(distinct nome) AS qtdTN3 FROM aluno WHERE aluno_
 $res_qtd_TN3 = $conn->query($sql_topnotch_3);
 $qtd_TN3 = $res_qtd_TN3->fetch_object()->qtdTN3;
 
-$agora = date("m");// new DateTime('now', new DateTimeZone('America/SaoPaulo'));
-$meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-$este_mes = $meses[$agora - 1];
-if ($agora == 1){$mes_passado='Dezembro';}else{$mes_passado = $meses[$agora - 2];}
 
 // PRIMEIRA LINHA ---------------------------------------
 print('<div class="container text-center">');
@@ -59,7 +60,8 @@ print('<div class="card">');
 print('<img src="images/lamp-icon.png" alt="icon" class="card-img-top">');
 print('<div class="card-header"><h3 class="card-title">Curso de Inglês</h3></div>');
 print('<div class="card-body">');
-print('<p class="card-text">DOM</p></div>');
+print('<p class="card-text">DOM</p>');
+print('<p class="card-text"><a href="aluno_novo.php">TESTE</a></p></div>');
 print('</div>');
 print('</div>');
     
@@ -69,8 +71,9 @@ print('<div class="card">');
 print('<div class="card-header"><h3 class="card-title"><img src="images/stats-icon.png" alt="icon" width="30" height="30"> Educacional</h3></div>');
 print('<div class="card-body"><p class="card-text"><p>'); 
 print($qtd); print(' alunos</p>');
-print('<p>Faltas na semana: 2</p>');
-print('<p>Sem tarefa: 1</p>');
+print('<p>Faltas na semana: 2</p>'); // AJUSTAR
+print('<p>Sem tarefa: 1</p>'); // AJUSTAR
+print('<p>Novos alunos: Nenhum a aprovar</p>'); // AJUSTAR
 print('</div>'); 
 print('</div>');
 print('</div>');
@@ -79,12 +82,18 @@ print('</div>');
 print('<div class="col-12 col-md-6 col-lg-3">');
 print('<div class="card">');
 print('<div class="card-header"><h3 class="card-title"><img src="images/fat-icon.png" alt="icon" width="30" height="30"> Financeiro</h3></div>');
-print('<div class="card-body"><p>');
-print($este_mes); print(' - '); print(date("Y")); print('</p>');
-print('<p>Total: R$ '); print($fat); print(',00</p>');
-print('<p>Recebido: R$ '); print($rec); print(',00</p>');
-print('<p>A receber: R$ '); print($fat - $rec); print(',00</p>');
-print('<p>Mês passado ('); print($mes_passado); print('): R$ '); print($rec); print(',00</p>');
+print('<div class="card-body">');
+while ($row = mysqli_fetch_array($res_recebido)) {
+    printf('<p>%s de %s</p>', $row[1], $row[3]);
+    printf('<p>Valor: R$ %s,00 </p>', $row[0]);
+    printf('<p>Número de pagtos: %s </p><br>', $row[2]); 
+}
+
+// print($este_mes); print(' - '); print(date("Y")); print('</p>');
+// print('<p>Total: R$ '); print($fat); print(',00</p>');
+// print('<p>Recebido: R$ '); print($rec); print(',00</p>');
+// print('<p>A receber: R$ '); print($fat - $rec); print(',00</p><br>');
+// print('<p>Mês passado ('); print($mes_passado); print('): R$ '); print($rec); print(',00</p>');
 print('</div>'); 
 print('</div>');
 print('</div>');

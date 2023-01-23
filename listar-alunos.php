@@ -11,9 +11,6 @@
         print('<tr>');
             print('<th>#</th>');
             print('<th>Nome</th>');
-            print('<th>Dia</th>');
-            print('<th>Horário</th>');
-            print('<th>Dia que entrou</th>');
             print('<th>Livro</th>');
             print('<th>Ações</th>');
             print('</tr>');
@@ -21,9 +18,6 @@
             print('<tr>');
             print('<td>'.$row->id.'</td>');
             print('<td>'.$row->nome.'</td>');
-            print('<td>'.$row->dia.'</td>');
-            print('<td>'.$row->hora.'</td>');
-            print('<td>'.$row->aluno_data.'</td>');
             print('<td>'.$row->aluno_livro.'</td>');
             print("<td>
                     <!-- Botão Editar -->
@@ -32,8 +26,12 @@
                     <!-- Botão Excluir -->
                     <button onclick=\"if(confirm('Tem certeza que deseja excluir?')){location.href='?page=salvar&acao=excluir&id=".$row->id."';}else{false;}\" type='button' class='btn btn-outline-danger'>Excluir</button>
 
+                    <!-- Botão Extrato -->
+                    <button onclick=\"location.href='?page=listar-pgto-aluno&id=".$row->id."&nome=".$row->nome."';\" type='button' class='btn btn-outline-warning' target='listar-pgto.php'>Extrato</button>
+                                      
+                    
                     <!-- Botão Incluir Pagamento -->
-                    <button onclick=\"if(confirm('Pagamento na data de hoje?')){location.href='?page=salvar&acao=cadastrar-pgto&id=".$row->id."&valor=".$row->valor."';}else{false;}\" type='button' class='btn btn-outline-success' target='listar-pgto.php'>Incluir Pagamento</button>
+                    <button onclick=\"if(confirm('Pagamento na data de hoje?')){location.href='?page=salvar&acao=cadastrar-pgto&id=".$row->id."&valor=".$row->valor."';}else{false;}\" type='button' class='btn btn-success' target='listar-pgto.php'>Incluir Pagto</button>
                     </td>");
             print('</tr>');
         }

@@ -20,8 +20,8 @@
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-            <img src="images/flag-icon.png" width="30" height="30" alt="">
-            Hi there :)</a>
+                <img src="images/flag-icon.png" width="30" height="30" alt="">
+                Hi there :)</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -76,6 +76,9 @@
                     case "editar-pgto":
                         include("editar-pgto.php");
                         break;
+                    case "listar-pgto-aluno":
+                        include("listar-pgto-aluno.php");
+                        break;
                     case "listar-pgto":
                         include("listar-pgto.php");
                         break;
@@ -89,29 +92,9 @@
                         include("landing-page.php");
                 }
                 ?>
-
-                <!-- TENTATIVA DE FEED INSTAGRAM - 
-                //         print '                        
-                //         <div id="instafeed" class="owl-carousel owl-theme owl-loaded owl-drag"></div>
-                //         <script type="text/javascript">
-                //         var feed = new Instafeed({
-                //         accessToken: "your-token", 
-                //         limit:8
-                //         template:"<div class="item"><a href="{{link}}"><img title="{{caption}}" src="{{image}}" /></a></div>"
-                //         });
-                //         after: function(){
-                //             $(".owl-carousel").owlCarousel();
-                //         }
-
-                //         feed.run();
-                        
-                //         </script>';
-                
             </div>
         </div>
     </div>
-    
-
     <footer>
     <!-- Option 1: Bootstrap Bundle with Popper -->
                 <script src="js/bootstrap.bundle.min.js"></script>
