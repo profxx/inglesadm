@@ -57,11 +57,11 @@ print('<div class="row g-3">');
 // MONTAGEM CURSO
 print('<div class="col-12 col-md-6 col-lg-3">');
 print('<div class="card">');
-print('<img src="images/lamp-icon.png" alt="icon" class="card-img-top">');
-print('<div class="card-header"><h3 class="card-title">Curso de Inglês</h3></div>');
+print('<div class="card-header"><h3 class="card-title"><img src="images/lamp-icon.png" alt="icon" width="30" height="30"> Curso de Inglês</h3></div>');
 print('<div class="card-body">');
-print('<p class="card-text">DOM</p>');
-print('<p class="card-text"><a href="aluno_novo.php">TESTE</a></p></div>');
+print('<p class="card-text">Nome: DOM</p>');
+// print('<p class="card-text"><a href="templates/usuario/cadastrar-usuario.php">Cadastrar Usuário</a></p>');
+print('</div>');
 print('</div>');
 print('</div>');
     
@@ -72,7 +72,7 @@ print('<div class="card-header"><h3 class="card-title"><img src="images/stats-ic
 print('<div class="card-body"><p class="card-text"><p>'); 
 print($qtd); print(' alunos</p>');
 print('<p>Faltas na semana: 2</p>'); // AJUSTAR
-print('<p>Sem tarefa: 1</p>'); // AJUSTAR
+print('<p>Sem tarefa: -</p>'); // AJUSTAR
 print('<p>Novos alunos: Nenhum a aprovar</p>'); // AJUSTAR
 print('</div>'); 
 print('</div>');
@@ -88,12 +88,6 @@ while ($row = mysqli_fetch_array($res_recebido)) {
     printf('<p>Valor: R$ %s,00 </p>', $row[0]);
     printf('<p>Número de pagtos: %s </p><br>', $row[2]); 
 }
-
-// print($este_mes); print(' - '); print(date("Y")); print('</p>');
-// print('<p>Total: R$ '); print($fat); print(',00</p>');
-// print('<p>Recebido: R$ '); print($rec); print(',00</p>');
-// print('<p>A receber: R$ '); print($fat - $rec); print(',00</p><br>');
-// print('<p>Mês passado ('); print($mes_passado); print('): R$ '); print($rec); print(',00</p>');
 print('</div>'); 
 print('</div>');
 print('</div>');

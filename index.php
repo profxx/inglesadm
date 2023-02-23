@@ -1,112 +1,73 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Alunos</title>
+	<title>English Course</title>
+   <!--Made with love by Mutiullah Samim -->
+   
+	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.rtl.min.css">
-
-    <!-- OWL Carousel CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<!--Custom styles-->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
+<body class="img-login">
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>Sign in</h3>
+				<div class="d-flex justify-content-end social_icon">
+					<span><i class="fab fa-facebook-square"></i></span>
+					<span><i class="fab fa-google-plus-square"></i></span>
+					<span><i class="fab fa-twitter-square"></i></span>
+				</div>
+			</div>
+			<div class="card-body">
+				<form action="templates/usuario/validate.php" method="post">
+					<?php
+						if (isset($_GET['error'])){ ?>
+							<p class="error"> <?php echo $_GET['error']; ?> </p>
+						<?php } ?>
 
-<body>
-    <!-- MENU SUPERIOR -->
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="images/flag-icon.png" width="30" height="30" alt="">
-                Hi there :)</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="?page=listar-pgto">Listar Pagamentos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="?page=listar">Listar Alunos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="?page=novo">Novo Aluno</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="?page=calendario">Calendário Semanal</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="?page=listar-datas">Listar Datas</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-    <div class="container">
-        <div class="row">
-            <div class="col mt-5">
-
-                <?php
-                include("conecta-bd.php");
-                switch (@$_REQUEST['page']) {
-                    case "pgto":
-                        include('cadastrar-pgto.php');
-                        break;
-                    case "listar":
-                        include('listar-alunos.php');
-                        break;
-                    case "novo":
-                        include('cadastrar-aluno.php');
-                        break;
-                    case "salvar":
-                        include("salvar.php");
-                        break;
-                    case "editar":
-                        include("editar-aluno.php");
-                        break;
-                    case "editar-pgto":
-                        include("editar-pgto.php");
-                        break;
-                    case "listar-pgto-aluno":
-                        include("listar-pgto-aluno.php");
-                        break;
-                    case "listar-pgto":
-                        include("listar-pgto.php");
-                        break;
-                    case "calendario":
-                        include("calendario.php");
-                        break;
-                    case "listar-datas":
-                        include("listar-datas.php");
-                        break;
-                    default:
-                        include("landing-page.php");
-                }
-                ?>
-            </div>
-        </div>
-    </div>
-    <footer>
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-                <script src="js/bootstrap.bundle.min.js"></script>
-
-                <!-- Instafeed JS -->
-                <script type="text/javascript" src="js/instafeed.min.js"></script>
-
-                <!-- OWL Carousel JS -->
-                <script src="js/jquery.min.js"></script>
-                <script src="js/owl.carousel.min.js"></script>
-                </footer>
-
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" name="usu_login" class="form-control" placeholder="username">
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" name="usu_senha" class="form-control" placeholder="password">
+					</div>
+					<div class="row align-items-center remember">
+						<input type="checkbox" name="remeber">Remember Me
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Login" class="btn float-right login_btn">
+					</div>
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Don't have an account?<a href="#">Sign Up</a>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a href="#">Forgot your password?</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 </body>
-
 </html>

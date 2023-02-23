@@ -7,8 +7,9 @@ switch ($_REQUEST["acao"]) {
         $hora = $_POST["hora"];
         $aluno_data = $_POST["aluno_data"];
         $aluno_livro = ucwords($_POST["aluno_livro"]);
+        $aluno_ativo = $_POST["aluno_ativo"];
 
-        $sql = "INSERT INTO aluno (nome, valor, dia, hora, aluno_data, aluno_livro) VALUES ('{$nome}', '{$valor}', '{$dia}', '{$hora}', '{$aluno_data}', '{$aluno_livro}');";
+        $sql = "INSERT INTO aluno (nome, valor, dia, hora, aluno_data, aluno_livro, aluno_ativo) VALUES ('{$nome}', '{$valor}', '{$dia}', '{$hora}', '{$aluno_data}', '{$aluno_livro}', '{$aluno_ativo}');";
 
         $res = $conn->query($sql);
 
@@ -22,6 +23,26 @@ switch ($_REQUEST["acao"]) {
 
         break;
 
+    case "cadastrar-usuario":
+        $usu_nome = ucwords($_POST["usu_nome"]);
+        $usu_email = strtolower($_POST["usu_email"]);
+        $usu_login = $_POST["usu_login"];
+        $usu_senha = $_POST["usu_senha"];
+
+        $sql = "INSERT INTO usuario (usu_nome, usu_email, usu_login, usu_senha) VALUES ('{$usu_nome}', '{$usu_email}', '{$usu_login}', '{$usu_senha}');";
+
+        $res = $conn->query($sql);
+
+        if ($res == true) {
+            print("<script>alert('Usuário cadastrado com sucesso.')</script>");
+            print('<script>location.href="?page=";</script>');
+        } else {
+            print('<script>alert("Não foi possível efetuar o cadastro.");</script>');
+            print('<script>location.href="?page=";</script>');
+        }
+
+        break;
+
     case "editar":
         $nome = ucwords($_POST["nome"]);
         $valor = $_POST["valor"];
@@ -29,6 +50,8 @@ switch ($_REQUEST["acao"]) {
         $hora = $_POST["hora"];
         $aluno_data = $_POST["aluno_data"];
         $aluno_livro = ucwords($_POST["aluno_livro"]);
+        $aluno_ativo = $_POST["aluno_ativo"];
+
 
         $sql = "UPDATE aluno SET 
                         nome='{$nome}', 
@@ -36,9 +59,37 @@ switch ($_REQUEST["acao"]) {
                         dia='{$dia}', 
                         hora='{$hora}',
                         aluno_data='{$aluno_data}',
-                        aluno_livro='{$aluno_livro}'
+                        aluno_livro='{$aluno_livro}',
+                        aluno_ativo='{$aluno_ativo}'
                         
                     WHERE id=" . $_REQUEST['id'] . ";";
+
+        $res = $conn->query($sql);
+
+        if ($res == true) {
+            print("<script>alert('Editado com sucesso.')</script>");
+            print('<script>location.href="?page=listar";</script>');
+        } else {
+            print('<script>alert("Não foi possível editar.");</script>');
+            print('<script>location.href="?page=listar";</script>');
+        }
+
+        break;
+
+    case "editar-usuario":
+        $usu_nome = ucwords($_POST["usu_nome"]);
+        $usu_email = strtolower($_POST["usu_email"]);
+        $usu_login = $_POST["usu_login"];
+        $usu_senha = $_POST["usu_senha"];
+
+
+        $sql = "UPDATE aluno SET 
+                            usu_nome='{$usu_nome}', 
+                            usu_email='{$usu_email}', 
+                            usu_login='{$usu_login}',
+                            usu_senha='{$usu_senha}'
+                            
+                        WHERE pk_usu_id=" . $_REQUEST['id'] . ";";
 
         $res = $conn->query($sql);
 
@@ -63,6 +114,20 @@ switch ($_REQUEST["acao"]) {
         } else {
             print('<script>alert("Não foi possível excluir o aluno.");</script>');
             print('<script>location.href="?page=listar";</script>');
+        }
+        break;
+
+    case "excluir-usuario":
+        $sql = "DELETE FROM usuario WHERE pk_usu_id=" . $_REQUEST['id'] . ";";
+
+        $res = $conn->query($sql);
+
+        if ($res == true) {
+            print("<script>alert('Usuário excluído com sucesso.')</script>");
+            print('<script>location.href="?page=listar-usuario";</script>');
+        } else {
+            print('<script>alert("Não foi possível excluir o usuário.");</script>');
+            print('<script>location.href="?page=listar-usuario";</script>');
         }
         break;
 

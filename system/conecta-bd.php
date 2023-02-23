@@ -10,5 +10,8 @@
     define('BASE', 'cad_aluno');
 
     $conn = new MySQLi(HOST, USER, PASS, BASE);
-    
+
+    if (!$conn){
+        echo "Connection failed";
+    }
 ?>
