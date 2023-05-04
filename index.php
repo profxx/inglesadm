@@ -6,8 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>English Course</title>
-   <!--Made with love by Mutiullah Samim -->
+	<link rel="icon" href="images/flag-icon.png" />
+    <title>Inglês ADM</title>
    
 	<!--Bootsrap 4 CDN-->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -31,7 +31,7 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<form action="templates/usuario/validate.php" method="post">
+				<form action="pages/usuario/validate.php" method="post">
 					<?php
 						if (isset($_GET['error'])){ ?>
 							<p class="error"> <?php echo $_GET['error']; ?> </p>

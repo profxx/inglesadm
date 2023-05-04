@@ -1,4 +1,4 @@
-<h1>Pagamentos Recebidos</h1>
+<h2>Pagamentos Recebidos <button class="btn btn-primary" onclick="location.href='?page=listar-datas'">Listar Datas</button></h2>
 <?php
     $sql = 'SELECT L.data_pagamento, A.nome, L.valor, L.conta_recebida, A.id, L.id_lancamento FROM lancamento as L INNER JOIN aluno as A ON (L.id_aluno = A.id) ORDER BY data_pagamento DESC;';
 

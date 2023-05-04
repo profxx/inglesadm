@@ -1,6 +1,6 @@
-<h1>Lista de Alunos</h1>
+<h2>Lista de Alunos <button class="btn btn-primary" onclick="location.href='?page=novo'">Cadastrar Novo</button></h2>
 <?php
-    $sql = 'SELECT * FROM aluno ORDER BY nome;';
+    $sql = 'SELECT * FROM aluno WHERE dia != "Inativo" ORDER BY nome;';
 
     $res = $conn->query($sql);
 
@@ -29,7 +29,6 @@
                     <!-- Botão Extrato -->
                     <button onclick=\"location.href='?page=listar-pgto-aluno&id=".$row->id."&nome=".$row->nome."';\" type='button' class='btn btn-outline-warning' target='listar-pgto.php'>Extrato</button>
                                       
-                    
                     <!-- Botão Incluir Pagamento -->
                     <button onclick=\"if(confirm('Pagamento na data de hoje?')){location.href='?page=salvar&acao=cadastrar-pgto&id=".$row->id."&valor=".$row->valor."';}else{false;}\" type='button' class='btn btn-success' target='listar-pgto.php'>Incluir Pagto</button>
                     </td>");

@@ -6,6 +6,37 @@
     $res = $conn->query($sql);
 
     $row = $res->fetch_object();
+
+    switch ($row->dia) {
+        case "Selecionar": {
+            $check0 = "selected";
+            break;
+        }
+        case "Segunda-feira": {
+            $check1 = "selected";
+            break;
+        }
+        case "Terça-feira": {
+            $check2 = "selected";
+            break;
+        }
+        case "Quarta-feira": {
+            $check3 = "selected";
+            break;
+        }
+        case "Quinta-feira": {
+            $check4 = "selected";
+            break;
+        }
+        case "Sexta-feira": {
+            $check5 = "selected";
+            break;
+        }
+        case "Inativo": {
+            $check6 = "selected";
+            break;
+        }
+      }
 ?>
 
 <form action="?page=salvar" method="POST">
@@ -22,21 +53,22 @@
     </div>
 
     <div class="mb-3">
-        <label>Dia da Aula</label>
+        <label>Dia da Aula</label> 
         <select type="text" name="dia" class="form-control">
-            <option>Selecionar</option>
-            <option>Segunda-feira</option>
-            <option>Terça-feira</option>
-            <option>Quarta-feira</option>
-            <option>Quinta-feira</option>
-            <option>Sexta-feira</option>
+            <option '.$check0.'>Selecionar</option>
+            <option '.$check1.'>Segunda-feira</option>
+            <option '.$check2.'>Terça-feira</option>
+            <option '.$check3.'>Quarta-feira</option>
+            <option '.$check4.'>Quinta-feira</option>
+            <option '.$check5.'>Sexta-feira</option>
+            <option '.$chec65.'>Inativo</option>
         </select>
         <!-- <input type="text" name="dia" class="form-control"> -->
     </div>
 
     <div class="mb-3">
         <label>Horário</label>
-        <select type="text" name="hora" class="form-control">
+        <select type="text" name="hora" class="form-control" value="<?php print($row->hora); ?>">
             <option>Selecionar</option>
             <option>5:20pm</option>
             <option>5:30pm</option>
@@ -53,12 +85,12 @@
 
     <div class="mb-3">
         <label>Dia (do mês) que começou</label>
-        <input type="date-local" name="aluno_data" class="form-control">
+        <input type="date-local" name="aluno_data" class="form-control" value="<?php print($row->aluno_data); ?>">
     </div>
 
     <div class="mb-3">
         <label>Livro Atual</label>
-        <select type="text" name="aluno_livro" class="form-control">
+        <select type="text" name="aluno_livro" class="form-control" value="<?php print($row->aluno_livro); ?>">
             <option>Selecionar</option>
             <option>NAT GEO World Link Intro</option>
             <option>NAT GEO World Link 1</option>

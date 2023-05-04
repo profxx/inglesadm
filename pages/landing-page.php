@@ -1,6 +1,6 @@
 <?php
 
-$sql_qtd_alunos = 'SELECT COUNT(distinct nome) AS qtdRegistros FROM aluno;';
+$sql_qtd_alunos = 'SELECT COUNT(distinct nome) AS qtdRegistros FROM aluno WHERE dia != "Inativo";';
 $res_qtd_alunos = $conn->query($sql_qtd_alunos);
 $qtd = $res_qtd_alunos->fetch_object()->qtdRegistros;
 
@@ -10,7 +10,7 @@ $res_faturamento = $conn->query($sql_faturamento_mensal);
 $fat = $res_faturamento->fetch_object()->faturamento;
 
 
-$sql_recebido = 'SELECT SUM(valor) AS recebido, CASE EXTRACT(MONTH from data_pagamento) WHEN 1 THEN "Janeiro" WHEN 2 THEN "Fevereiro" WHEN 3 THEN "Março" WHEN 4 THEN "Abril" WHEN 5 THEN "Maio" WHEN 6 THEN "Junho" WHEN 7 THEN "Julho" WHEN 8 THEN "Agosto" WHEN 9 THEN "Setembro" WHEN 10 THEN "Outubro" WHEN 11 THEN "Novembro" WHEN 12 THEN "Dezembro" END AS mes, COUNT(id_lancamento) AS qtdPagtos, EXTRACT(YEAR from data_pagamento) as ano FROM lancamento GROUP BY mes';
+$sql_recebido = 'SELECT SUM(valor) AS recebido, CASE EXTRACT(MONTH from data_pagamento) WHEN 1 THEN "Janeiro" WHEN 2 THEN "Fevereiro" WHEN 3 THEN "Março" WHEN 4 THEN "Abril" WHEN 5 THEN "Maio" WHEN 6 THEN "Junho" WHEN 7 THEN "Julho" WHEN 8 THEN "Agosto" WHEN 9 THEN "Setembro" WHEN 10 THEN "Outubro" WHEN 11 THEN "Novembro" WHEN 12 THEN "Dezembro" END AS mes, COUNT(id_lancamento) AS qtdPagtos, EXTRACT(YEAR from data_pagamento) as ano FROM lancamento GROUP BY mes ORDER BY mes DESC';
 $res_recebido = $conn->query($sql_recebido);
 
 
@@ -70,7 +70,7 @@ print('<div class="col-12 col-md-6 col-lg-3">');
 print('<div class="card">');
 print('<div class="card-header"><h3 class="card-title"><img src="images/stats-icon.png" alt="icon" width="30" height="30"> Educacional</h3></div>');
 print('<div class="card-body"><p class="card-text"><p>'); 
-print($qtd); print(' alunos</p>');
+print($qtd); print(' alunos ativos</p>');
 print('<p>Faltas na semana: 2</p>'); // AJUSTAR
 print('<p>Sem tarefa: -</p>'); // AJUSTAR
 print('<p>Novos alunos: Nenhum a aprovar</p>'); // AJUSTAR
@@ -84,9 +84,13 @@ print('<div class="card">');
 print('<div class="card-header"><h3 class="card-title"><img src="images/fat-icon.png" alt="icon" width="30" height="30"> Financeiro</h3></div>');
 print('<div class="card-body">');
 while ($row = mysqli_fetch_array($res_recebido)) {
-    printf('<p>%s de %s</p>', $row[1], $row[3]);
+    print('<div class="card">');
+    print('<div class="card-header">');
+    printf('<h5>%s de %s</h5>', $row[1], $row[3]);
+    print('</div>');
     printf('<p>Valor: R$ %s,00 </p>', $row[0]);
     printf('<p>Número de pagtos: %s </p><br>', $row[2]); 
+    print('</div>'); 
 }
 print('</div>'); 
 print('</div>');

@@ -1,4 +1,5 @@
-<h1>Lista de Alunos</h1>
+<h2>Lista de Usuários <button class="btn btn-primary" onclick="location.href='?page=cadastrar-usuario'">Cadastrar Novo</button></h2>
+
 <?php
     $sql = 'SELECT * FROM usuario ORDER BY usu_nome;';
 

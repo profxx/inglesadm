@@ -20,6 +20,7 @@
             <option>Quarta-feira</option>
             <option>Quinta-feira</option>
             <option>Sexta-feira</option>
+            <option>Inativo</option>
         </select>
         <!-- <input type="text" name="dia" class="form-control"> -->
     </div>
@@ -59,11 +60,6 @@
             <option>Top Notch 2</option>
             <option>Top Notch 3</option>
         </select>
-    </div>
-
-    <div class="mb-3">
-        <label>Ativo</label>
-        <input type="checkbox" name="aluno_ativo" value="1" checked>
     </div>
 
     <div class="mb-3">

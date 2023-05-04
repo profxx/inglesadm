@@ -13,6 +13,7 @@ if (isset($_SESSION['pk_usu_id']) && isset($_SESSION['usu_nome'])) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="images/flag-icon.png" />
         <title>Inglês ADM</title>
 
         <!-- Bootstrap CSS -->
@@ -27,7 +28,7 @@ if (isset($_SESSION['pk_usu_id']) && isset($_SESSION['usu_nome'])) {
         <!-- MENU SUPERIOR -->
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="tela_adm.php">
                     <img src="images/flag-icon.png" width="30" height="30" alt="">
                     Hello, <?php echo $_SESSION['usu_nome']; ?> :)</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,30 +36,19 @@ if (isset($_SESSION['pk_usu_id']) && isset($_SESSION['usu_nome'])) {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
+
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="tela_adm.php">Home</a>
+                            <a class="nav-link active" href="?page=calendario">Calendário Semanal</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="?page=listar-pgto">Listar Pagamentos</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="?page=listar">Listar Alunos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?page=novo">Novo Aluno</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?page=calendario">Calendário Semanal</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?page=listar-datas">Listar Datas</a>
-                        </li>
 
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="?page=cadastrar-usuario">Cadastrar Usuário</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="?page=listar-usuario">ListarUsuário</a>
                         </li>
@@ -67,6 +57,7 @@ if (isset($_SESSION['pk_usu_id']) && isset($_SESSION['usu_nome'])) {
                         <li class="nav-item">
                             <a class="nav-link" href="?page=logout">Sair</a>
                         </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -81,51 +72,51 @@ if (isset($_SESSION['pk_usu_id']) && isset($_SESSION['usu_nome'])) {
                     include("system/conecta-bd.php");
                     switch (@$_REQUEST['page']) {
                         case "pgto":
-                            include('templates/pagamento/cadastrar-pgto.php');
+                            include('pages/pagamento/cadastrar-pgto.php');
                             break;
                         case "listar":
-                            include('templates/aluno/listar-alunos.php');
+                            include('pages/aluno/listar-alunos.php');
                             break;
                         case "novo":
-                            include('templates/aluno/cadastrar-aluno.php');
+                            include('pages/aluno/cadastrar-aluno.php');
                             break;
                         case "salvar":
                             include("system/salvar.php");
                             break;
                         case "editar":
-                            include("templates/aluno/editar-aluno.php");
+                            include("pages/aluno/editar-aluno.php");
                             break;
                         case "editar-pgto":
-                            include("templates/pagamento/editar-pgto.php");
+                            include("pages/pagamento/editar-pgto.php");
                             break;
                         case "listar-pgto-aluno":
-                            include("templates/pagamento/listar-pgto-aluno.php");
+                            include("pages/pagamento/listar-pgto-aluno.php");
                             break;
                         case "listar-pgto":
-                            include("templates/pagamento/listar-pgto.php");
+                            include("pages/pagamento/listar-pgto.php");
                             break;
                         case "calendario":
-                            include("templates/calendario/calendario.php");
+                            include("pages/calendario/calendario.php");
                             break;
                         case "listar-datas":
-                            include("templates/aluno/listar-datas.php");
+                            include("pages/aluno/listar-datas.php");
                             break;
                         case "logout":
-                            include("templates/usuario/logout.php");
+                            include("pages/usuario/logout.php");
                             break;
                         case "cadastrar-usuario":
-                            include("templates/usuario/cadastrar-usuario.php");
+                            include("pages/usuario/cadastrar-usuario.php");
                             break;
                         case "listar-usuario":
-                            include("templates/usuario/listar-usuario.php");
+                            include("pages/usuario/listar-usuario.php");
                             break;
                         case "editar-usuario":
-                            include("templates/usuario/editar-usuario.php");
+                            include("pages/usuario/editar-usuario.php");
                             break;
                         case "tela_adm":
-                            include("templates/landing-page.php");
+                            include("pages/landing-page.php");
                         default:
-                            include("templates/landing-page.php");
+                            include("pages/landing-page.php");
                     }
                     ?>
                 </div>

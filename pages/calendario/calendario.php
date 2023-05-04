@@ -1,4 +1,4 @@
-<h1>Calendário Semanal</h1>
+<h2>Calendário Semanal</h2>
 
 <?php
 
