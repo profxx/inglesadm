@@ -10,42 +10,42 @@ $res_faturamento = $conn->query($sql_faturamento_mensal);
 $fat = $res_faturamento->fetch_object()->faturamento;
 
 
-$sql_recebido = 'SELECT SUM(valor) AS recebido, CASE EXTRACT(MONTH from data_pagamento) WHEN 1 THEN "Janeiro" WHEN 2 THEN "Fevereiro" WHEN 3 THEN "Março" WHEN 4 THEN "Abril" WHEN 5 THEN "Maio" WHEN 6 THEN "Junho" WHEN 7 THEN "Julho" WHEN 8 THEN "Agosto" WHEN 9 THEN "Setembro" WHEN 10 THEN "Outubro" WHEN 11 THEN "Novembro" WHEN 12 THEN "Dezembro" END AS mes, COUNT(id_lancamento) AS qtdPagtos, EXTRACT(YEAR from data_pagamento) as ano FROM lancamento GROUP BY mes ORDER BY mes DESC';
+$sql_recebido = 'SELECT SUM(valor) AS recebido, CASE EXTRACT(MONTH from data_pagamento) WHEN 1 THEN "Janeiro" WHEN 2 THEN "Fevereiro" WHEN 3 THEN "Março" WHEN 4 THEN "Abril" WHEN 5 THEN "Maio" WHEN 6 THEN "Junho" WHEN 7 THEN "Julho" WHEN 8 THEN "Agosto" WHEN 9 THEN "Setembro" WHEN 10 THEN "Outubro" WHEN 11 THEN "Novembro" WHEN 12 THEN "Dezembro" END AS mes, COUNT(id_lancamento) AS qtdPagtos, EXTRACT(YEAR from data_pagamento) as ano FROM lancamento GROUP BY mes ORDER BY data_pagamento DESC';
 $res_recebido = $conn->query($sql_recebido);
 
 
-$sql_worldlink_intro = 'SELECT COUNT(distinct nome) AS qtdWLIntro FROM aluno WHERE aluno_livro="NAT GEO World Link Intro"';
+$sql_worldlink_intro = 'SELECT COUNT(distinct nome) AS qtdWLIntro FROM aluno WHERE aluno_livro="NAT GEO World Link Intro" AND dia != "Inativo"';
 $res_qtd_WLIntro = $conn->query($sql_worldlink_intro);
 $qtd_WLI = $res_qtd_WLIntro->fetch_object()->qtdWLIntro;
 
 
-$sql_worldlink_1 = 'SELECT COUNT(distinct nome) AS qtdWL1 FROM aluno WHERE aluno_livro="NAT GEO World Link 1"';
+$sql_worldlink_1 = 'SELECT COUNT(distinct nome) AS qtdWL1 FROM aluno WHERE aluno_livro="NAT GEO World Link 1" AND dia != "Inativo"';
 $res_qtd_WL1 = $conn->query($sql_worldlink_1);
 $qtd_WL1 = $res_qtd_WL1->fetch_object()->qtdWL1;
 
 
-$sql_worldlink_2 = 'SELECT COUNT(distinct nome) AS qtdWL2 FROM aluno WHERE aluno_livro="NAT GEO World Link 2"';
+$sql_worldlink_2 = 'SELECT COUNT(distinct nome) AS qtdWL2 FROM aluno WHERE aluno_livro="NAT GEO World Link 2" AND dia != "Inativo"';
 $res_qtd_WL2 = $conn->query($sql_worldlink_2);
 $qtd_WL2 = $res_qtd_WL2->fetch_object()->qtdWL2;
 
 
-$sql_worldlink_3 = 'SELECT COUNT(distinct nome) AS qtdWL3 FROM aluno WHERE aluno_livro="NAT GEO World Link 3"';
+$sql_worldlink_3 = 'SELECT COUNT(distinct nome) AS qtdWL3 FROM aluno WHERE aluno_livro="NAT GEO World Link 3" AND dia != "Inativo"';
 $res_qtd_WL3 = $conn->query($sql_worldlink_3);
 $qtd_WL3 = $res_qtd_WL3->fetch_object()->qtdWL3;
 
-$sql_topnotch_fund = 'SELECT COUNT(distinct nome) AS qtdTNFund FROM aluno WHERE aluno_livro="Top Notch Fundamentals"';
+$sql_topnotch_fund = 'SELECT COUNT(distinct nome) AS qtdTNFund FROM aluno WHERE aluno_livro="Top Notch Fundamentals" AND dia != "Inativo"';
 $res_qtd_TNFund = $conn->query($sql_topnotch_fund);
 $qtd_TNF = $res_qtd_TNFund->fetch_object()->qtdTNFund;
 
-$sql_topnotch_1 = 'SELECT COUNT(distinct nome) AS qtdTN1 FROM aluno WHERE aluno_livro="Top Notch 1"';
+$sql_topnotch_1 = 'SELECT COUNT(distinct nome) AS qtdTN1 FROM aluno WHERE aluno_livro="Top Notch 1" AND dia != "Inativo"';
 $res_qtd_TN1 = $conn->query($sql_topnotch_1);
 $qtd_TN1 = $res_qtd_TN1->fetch_object()->qtdTN1;
 
-$sql_topnotch_2 = 'SELECT COUNT(distinct nome) AS qtdTN2 FROM aluno WHERE aluno_livro="Top Notch 2"';
+$sql_topnotch_2 = 'SELECT COUNT(distinct nome) AS qtdTN2 FROM aluno WHERE aluno_livro="Top Notch 2" AND dia != "Inativo"';
 $res_qtd_TN2 = $conn->query($sql_topnotch_2);
 $qtd_TN2 = $res_qtd_TN2->fetch_object()->qtdTN2;
 
-$sql_topnotch_3 = 'SELECT COUNT(distinct nome) AS qtdTN3 FROM aluno WHERE aluno_livro="Top Notch 1"';
+$sql_topnotch_3 = 'SELECT COUNT(distinct nome) AS qtdTN3 FROM aluno WHERE aluno_livro="Top Notch 1" AND dia != "Inativo"';
 $res_qtd_TN3 = $conn->query($sql_topnotch_3);
 $qtd_TN3 = $res_qtd_TN3->fetch_object()->qtdTN3;
 
@@ -84,13 +84,9 @@ print('<div class="card">');
 print('<div class="card-header"><h3 class="card-title"><img src="images/fat-icon.png" alt="icon" width="30" height="30"> Financeiro</h3></div>');
 print('<div class="card-body">');
 while ($row = mysqli_fetch_array($res_recebido)) {
-    print('<div class="card">');
-    print('<div class="card-header">');
-    printf('<h5>%s de %s</h5>', $row[1], $row[3]);
-    print('</div>');
+    printf('<h5 class="card-title">%s de %s</h5>', $row[1], $row[3]);
     printf('<p>Valor: R$ %s,00 </p>', $row[0]);
     printf('<p>Número de pagtos: %s </p><br>', $row[2]); 
-    print('</div>'); 
 }
 print('</div>'); 
 print('</div>');

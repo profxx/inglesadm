@@ -1,10 +1,9 @@
 <h2>
-    Lista de Alunos 
-    <button class="btn btn-primary" onclick="location.href='?page=novo'">Cadastrar Novo</button>
-    <button class="btn btn-primary btn-sm" onclick="location.href='?page=inativos'">Inativos</button>
+    Lista de Inativos
+    <button class="btn btn-primary btn-sm" onclick="location.href='?page=listar'">Voltar para Ativos</button>
 </h2>
 <?php
-    $sql = 'SELECT * FROM aluno WHERE dia != "Inativo" ORDER BY nome;';
+    $sql = 'SELECT * FROM aluno WHERE dia = "Inativo" ORDER BY nome;';
 
     $res = $conn->query($sql);
 

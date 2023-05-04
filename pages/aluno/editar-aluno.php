@@ -102,11 +102,6 @@
             <option>Top Notch 3</option>
         </select>
     </div>
-
-    <div class="mb-3">
-        <label>Ativo</label>
-        <input type="checkbox" name="aluno_ativo" value="1" checked>
-    </div>
     
     <div class="mb-3">
         <button type="submit" class="btn btn-primary">Enviar</button>

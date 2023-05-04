@@ -115,6 +115,9 @@ if (isset($_SESSION['pk_usu_id']) && isset($_SESSION['usu_nome'])) {
                             break;
                         case "tela_adm":
                             include("pages/landing-page.php");
+                        case "inativos":
+                            include("pages/aluno/listar-inativos.php");
+                            break;
                         default:
                             include("pages/landing-page.php");
                     }
