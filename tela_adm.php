@@ -129,12 +129,6 @@ if (isset($_SESSION['pk_usu_id']) && isset($_SESSION['usu_nome'])) {
             <!-- Option 1: Bootstrap Bundle with Popper -->
             <script src="js/bootstrap.bundle.min.js"></script>
 
-            <!-- Instafeed JS -->
-            <script type="text/javascript" src="js/instafeed.min.js"></script>
-
-            <!-- OWL Carousel JS -->
-            <script src="js/jquery.min.js"></script>
-            <script src="js/owl.carousel.min.js"></script>
         </footer>
 
     </body>
