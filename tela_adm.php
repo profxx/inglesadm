@@ -19,9 +19,9 @@ if (isset($_SESSION['pk_usu_id']) && isset($_SESSION['usu_nome'])) {
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.rtl.min.css">
 
-        <!-- OWL Carousel CSS -->
-        <link rel="stylesheet" href="css/owl.carousel.min.css">
-        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+        <!-- CSS Local -->
+        <link rel="stylesheet" href="./css/calendario.css">
+
     </head>
 
     <body>
