@@ -13,7 +13,7 @@ $res_segunda = $conn->query($sql_segunda);
 $qtd_segunda = $res_segunda->num_rows;
 
 print("<div class='container text-center'>
-            <div class='row  calendario'>
+            <div class='row'>
                 <div class='col'>
                     <table class='table table-success table-striped table-hover table-bordered'>
                         <tr>
