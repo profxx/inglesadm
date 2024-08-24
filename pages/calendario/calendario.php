@@ -18,7 +18,7 @@ print("<div class='container text-center'>
                     <table class='table table-success table-striped table-hover table-bordered'>
                         <tr>
                             <th colspan=\"2\">Segunda</th>    
-                        </tr>'");
+                        </tr>");
 while ($row_segunda = $res_segunda->fetch_object()){
     print('<tr>');
     print('<td>'.$row_segunda->nome.'</td>');
