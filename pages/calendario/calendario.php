@@ -17,7 +17,7 @@ print("<div class='container text-center'>
                 <div class='col'>
                     <table class='table table-success table-striped table-hover table-bordered calendario'>
                         <tr>
-                            <th colspan="2">Segunda</th>    
+                            <th colspan=\"2\">Segunda</th>    
                         </tr>');");
 while ($row_segunda = $res_segunda->fetch_object()){
     print('<tr>');
