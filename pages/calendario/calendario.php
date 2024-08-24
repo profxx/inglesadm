@@ -21,7 +21,7 @@ print("<div class='container text-center'>
                         </tr>");
 while ($row_segunda = $res_segunda->fetch_object()){
     print('<tr>');
-    print('<td class="nome">'.$row_segunda->nome.'</td>');
+    print('<td style="min-width:120px">'.$row_segunda->nome.'</td>');
     print('<td>'.$row_segunda->hora.'</td>');
     print('</tr>');
 }
@@ -36,7 +36,7 @@ print('<div class="col"><table class="table table-success table-striped table-ho
     print('</tr>');
 while ($row_terca = $res_terca->fetch_object()){
     print('<tr>');
-    print('<td class="nome">'.$row_terca->nome.'</td>');
+    print('<td style="min-width:120px">'.$row_terca->nome.'</td>');
     print('<td>'.$row_terca->hora.'</td>');
     print('</tr>');
 }
@@ -51,7 +51,7 @@ print('<div class="col"><table class="table table-success table-striped table-ho
     print('</tr>');
 while ($row_quarta = $res_quarta->fetch_object()){
     print('<tr>');
-    print('<td class="nome">'.$row_quarta->nome.'</td>');
+    print('<td style="min-width:120px">'.$row_quarta->nome.'</td>');
     print('<td>'.$row_quarta->hora.'</td>');
     print('</tr>');
 }
@@ -66,7 +66,7 @@ print('<div class="col"><table class="table table-success table-striped table-ho
     print('</tr>');
 while ($row_quinta = $res_quinta->fetch_object()){
     print('<tr>');
-    print('<td class="nome">'.$row_quinta->nome.'</td>');
+    print('<td style="min-width:120px">'.$row_quinta->nome.'</td>');
     print('<td>'.$row_quinta->hora.'</td>');
     print('</tr>');
 }
@@ -81,7 +81,7 @@ print('<div class="col"><table class="table table-success table-striped table-ho
     print('</tr>');
 while ($row_sexta = $res_sexta->fetch_object()){
     print('<tr>');
-    print('<td class="nome">'.$row_sexta->nome.'</td>');
+    print('<td style="min-width:120px">'.$row_sexta->nome.'</td>');
     print('<td>'.$row_sexta->hora.'</td>');
     print('</tr>');
 }
