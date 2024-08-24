@@ -12,7 +12,7 @@ $sql_sexta = 'SELECT nome, dia, hora FROM aluno WHERE (dia = "Sexta-feira") ORDE
 $res_segunda = $conn->query($sql_segunda);
 $qtd_segunda = $res_segunda->num_rows;
 
-print("<div class='container text-center'><div class='row'><div class='col'><table class='table table-success table-striped table-hover table-bordered'>");
+print("<div class='container text-center calendario'><div class='row'><div class='col'><table class='table table-success table-striped table-hover table-bordered'>");
 print('<tr>');
     print('<th colspan="2">Segunda</th>');
     print('</tr>');
