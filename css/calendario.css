@@ -1,9 +1,3 @@
-@media screen and (max-width: 600px) {
-    row{
-        flex-direction: column;
-        flex-wrap: wrap;
-        margin: 5%;
-        padding: 0;
-        width: 100%;
-    }
+td .nome{
+    min-width: 200px;
 }
