@@ -30,7 +30,7 @@ if (isset($_SESSION['pk_usu_id']) && isset($_SESSION['usu_nome'])) {
             <div class="container-fluid">
                 <a class="navbar-brand" href="?page=tela_adm">
                     <img src="images/flag-icon.png" width="30" height="30" alt="">
-                    Hellow, <?php echo $_SESSION['usu_nome']; ?> :)</a>
+                    Hello, <?php echo $_SESSION['usu_nome']; ?> :)</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
