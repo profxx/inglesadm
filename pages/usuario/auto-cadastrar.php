@@ -27,7 +27,7 @@
 		    
 		    
 			<div class="card-header">
-				<h3>Sign up - Vinícius</h3>
+				<h3>Sign up</h3>
 
 			</div>
 			
